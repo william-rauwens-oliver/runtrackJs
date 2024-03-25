@@ -6,12 +6,10 @@ function jourTravaille(date) {
     var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     var dateFormatted = date.toLocaleDateString('fr-FR', options);
 
-    var jourSemaine = date.toLocaleDateString('fr-FR', { weekday: 'long' });
-
     var jour = date.getDate();
     var mois = date.getMonth() + 1;
     var annee = date.getFullYear();
-    var dateFerie = jour + "/" + mois;
+    var dateFerie = jour.toString().padStart(2, '0') + "/" + mois.toString().padStart(2, '0');
 
     if (date.getDay() === 0 || date.getDay() === 6) {
         console.log("Non, " + dateFormatted + " est un week-end.");
@@ -22,4 +20,4 @@ function jourTravaille(date) {
     }
 }
 
-jourTravaille(new Date("2024-11-09"));
+jourTravaille(new Date("2024-11-01"));
