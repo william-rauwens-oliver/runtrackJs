@@ -1,9 +1,25 @@
-// Jour Travaille
+function jourTravaille(date) {
+    var ferie = [
+        "01/01", "01/05", "09/05", "14/07", "01/11", "11/11", "25/12"
+    ];
 
-function JourTravaille(date) {
+    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    var dateFormatted = date.toLocaleDateString('fr-FR', options);
+
+    var jourSemaine = date.toLocaleDateString('fr-FR', { weekday: 'long' });
+
+    var jour = date.getDate();
+    var mois = date.getMonth() + 1;
+    var annee = date.getFullYear();
+    var dateFerie = jour + "/" + mois;
+
     if (date.getDay() === 0 || date.getDay() === 6) {
-        return "Non, aujourd'hui nous sommes le week-end";
+        console.log("Non, " + dateFormatted + " est un week-end.");
+    } else if (ferie.includes(dateFerie)) {
+        console.log("Le " + dateFormatted + " est un jour férié.");
     } else {
-        return "Oui, aujourd'hui nous sommes un jour de travail";
+        console.log("Oui, " + dateFormatted + " est un jour travaillé.");
     }
 }
+
+jourTravaille(new Date("2024-11-09"));
