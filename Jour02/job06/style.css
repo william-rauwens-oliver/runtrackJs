@@ -1,0 +1,27 @@
+body {
+    text-align: center;
+    background-color: black;
+    color: white;
+}
+
+.hidden {
+    display: none;
+}
+
+#LaPlateforme {
+    background-color: blue;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+a {
+    color: lightblue;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: skyblue;
+}
