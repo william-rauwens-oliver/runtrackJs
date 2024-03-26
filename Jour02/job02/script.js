@@ -7,4 +7,4 @@ function showhide() {
     }
   }
   
-  document.getElementById("button").addEventListener("click", showhide); 
+  document.getElementById("button").addEventListener("click", showhide);
