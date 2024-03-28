@@ -7,7 +7,7 @@ document.getElementById("button").addEventListener("click", function() {
         return response.text();
     })
     .then(data => {
-        document.getElementById("expression").innerText = data;
+        document.getElementById("expression").innerHTML = data;
     })
     .catch(error => {
         console.error("Erreur:", error);
