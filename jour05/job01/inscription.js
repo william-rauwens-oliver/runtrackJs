@@ -73,18 +73,24 @@ const validateInputs = () => {
     const addressValue = address.value.trim();
     const zipcodeValue = zipcode.value.trim();
 
+    const lettersOnlyRegex = /^[A-Za-z]+$/;
+
     if(usernameValue === '') {
         setError(username, 'Nom requis');
+    } else if (!lettersOnlyRegex.test(usernameValue)) {
+        setError(username, 'Le nom ne doit contenir que des lettres');
     } else if (usernameValue.length < 3) {
-        setError(username, 'Nom doit contenir au moins 3 lettres');
+        setError(username, 'Le nom doit contenir au moins 3 lettres');
     } else {
         setSuccess(username);
     }
 
     if(firstnameValue === '') {
         setError(firstname, 'Prénom requis');
+    } else if (!lettersOnlyRegex.test(firstnameValue)) {
+        setError(firstname, 'Le prénom ne doit contenir que des lettres');
     } else if (firstnameValue.length < 3) {
-        setError(firstname, 'Prénom doit contenir au moins 3 lettres');
+        setError(firstname, 'Le prénom doit contenir au moins 3 lettres');
     } else {
         setSuccess(firstname);
     }
