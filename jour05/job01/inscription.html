@@ -1,59 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inscription</title>
-  <link rel="stylesheet" href="connexion&inscription.css">
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <style>
-    .error-message {
-      color: red;
-      font-size: 0.8em;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="inscription.js"></script>
 </head>
 <body>
-  <div class="wrapper">
-    <form id="inscriptionForm">
-      <h1>Inscription</h1>
-      <div class="input-box">
-        <input type="text" id="nom" name="nom" placeholder="Nom" required>
-        <i class='bx bxs-user'></i>
-        <span id="nomError" class="error-message"></span>
+    <div class="container">
+        <form id="form" action="/">
+            <h1>Inscription</h1>
+            <div class="input-control">
+                <label for="username">Nom</label>
+                <input id="username" name="username" type="text">
+                <div class="error"></div>
+            </div>
+            <div class="input-control">
+                <label for="firstname">Prénom</label>
+                <input id="firstname" name="firstname" type="text">
+                <div class="error"></div>
+            </div>
+            <div class="input-control">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="text">
+                <div class="error"></div>
+            </div>
+            <div class="input-control">
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password">
+                <div class="error"></div>
+            </div>
+            <div class="input-control">
+                <label for="address">Adresse</label>
+                <input id="address" name="address" type="text">
+                <div class="error"></div>
+            </div>
+            <div class="input-control">
+                <label for="zipcode">Code postal</label>
+                <input id="zipcode" name="zipcode" type="text">
+                <div class="error"></div>
+            </div>
+            <button type="submit" class="btn">Sign Up</button>
+        </form>
+        <div class="register-link">
+          <p>Vous-avez un compte ? <a href="connexion.html">Connexion</a></p>
       </div>
-      <div class="input-box">
-        <input type="text" id="prenom" name="prenom" placeholder="Prénom" required>
-        <i class='bx bxs-user'></i>
-        <span id="prenomError" class="error-message"></span>
-      </div>
-      <div class="input-box">
-        <input type="email" id="email" name="email" placeholder="Email" required>
-        <i class='bx bx-envelope'></i>
-        <span id="emailError" class="error-message"></span>
-      </div>
-      <div class="input-box">
-        <input type="password" id="password" name="password" placeholder="Mot de passe" required>
-        <i class='bx bxs-lock-alt'></i>
-        <span id="passwordError" class="error-message"></span>
-      </div>
-      <div class="input-box">
-        <input type="text" id="adresse" name="adresse" placeholder="Adresse" required>
-        <i class='bx bx-home'></i>
-        <span id="adresseError" class="error-message"></span>
-      </div>
-      <div class="input-box">
-        <input type="text" id="code_postal" name="code_postal" placeholder="Code postal" required>
-        <i class='bx bx-mailbox'></i>
-        <span id="codePostalError" class="error-message"></span>
-      </div>
-      <button type="submit" class="btn">S'inscrire</button>
-      <div class="register-link">
-        <p>Vous avez un compte ? <a href="connexion.html">Connexion</a></p>
-      </div>
-    </form>
-  </div>
-
-  <script src="inscription.js"></script>
+    </div>
 </body>
 </html>

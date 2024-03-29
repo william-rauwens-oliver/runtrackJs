@@ -115,18 +115,3 @@ body {
 #formError {
   color: red;
 }
-
-.error-message {
-  font-size: 14px;
-  margin-top: 5px;
-  color: red;
-}
-#nomError,
-#prenomError,
-#emailError,
-#passwordError,
-#adresseError,
-#codePostalError,
-#formError {
-  color: red;
-}

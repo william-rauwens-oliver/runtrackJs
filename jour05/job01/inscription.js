@@ -1,121 +1,87 @@
-const inscriptionForm = document.getElementById('inscriptionForm');
-const nom = document.getElementById('nom');
-const prenom = document.getElementById('prenom');
+const form = document.getElementById('form');
+const username = document.getElementById('username');
+const firstname = document.getElementById('firstname');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
-const adresse = document.getElementById('adresse');
-const codePostal = document.getElementById('code_postal');
-const nomError = document.getElementById('nomError');
-const prenomError = document.getElementById('prenomError');
-const emailError = document.getElementById('emailError');
-const passwordError = document.getElementById('passwordError');
-const adresseError = document.getElementById('adresseError');
-const codePostalError = document.getElementById('codePostalError');
-const formError = document.getElementById('formError');
+const address = document.getElementById('address');
+const zipcode = document.getElementById('zipcode');
 
-inscriptionForm.addEventListener('submit', function(event) {
-  event.preventDefault();
-  let isValid = true;
-  clearErrorMessages();
+form.addEventListener('submit', e => {
+    e.preventDefault();
 
-  isValid = validateNom() && isValid;
-  isValid = validatePrenom() && isValid;
-  isValid = validateEmail() && isValid;
-  isValid = validatePassword() && isValid;
-  isValid = validateAdresse() && isValid;
-  isValid = validateCodePostal() && isValid;
-
-  if (isValid) {
-    inscriptionForm.submit();
-  }
+    validateInputs();
 });
 
-function displayErrorMessage(element, message) {
-  element.textContent = message;
+const setError = (element, message) => {
+    const inputControl = element.parentElement;
+    const errorDisplay = inputControl.querySelector('.error');
+
+    errorDisplay.innerText = message;
+    inputControl.classList.add('error');
+    inputControl.classList.remove('success');
 }
 
-function clearErrorMessages() {
-  nomError.textContent = '';
-  prenomError.textContent = '';
-  emailError.textContent = '';
-  passwordError.textContent = '';
-  adresseError.textContent = '';
-  codePostalError.textContent = '';
-  formError.textContent = '';
+const setSuccess = element => {
+    const inputControl = element.parentElement;
+    const errorDisplay = inputControl.querySelector('.error');
+
+    errorDisplay.innerText = '';
+    inputControl.classList.add('success');
+    inputControl.classList.remove('error');
+};
+
+const isValidEmail = email => {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
 }
 
-function validateNom() {
-  const nomValue = nom.value.trim();
-  if (nomValue === '') {
-    displayErrorMessage(nomError, 'Le nom est requis.');
-    return false;
-  }
-  return true;
-}
+const validateInputs = () => {
+    const usernameValue = username.value.trim();
+    const firstnameValue = firstname.value.trim();
+    const emailValue = email.value.trim();
+    const passwordValue = password.value.trim();
+    const addressValue = address.value.trim();
+    const zipcodeValue = zipcode.value.trim();
 
-function validatePrenom() {
-  const prenomValue = prenom.value.trim();
-  if (prenomValue === '') {
-    displayErrorMessage(prenomError, 'Le prénom est requis.');
-    return false;
-  }
-  return true;
-}
+    if(usernameValue === '') {
+        setError(username, 'Nom est requis');
+    } else {
+        setSuccess(username);
+    }
 
-function validateEmail() {
-  const emailValue = email.value.trim();
-  if (emailValue === '') {
-    displayErrorMessage(emailError, 'L\'email est requis.');
-    return false;
-  } else if (emailValue.indexOf('@') === -1 || emailValue.split('@').length !== 2) {
-    displayErrorMessage(emailError, 'Format d\'email invalide. Veuillez inclure "@" et le domaine.');
-    return false;
-  } else if (emailValue.split('@')[1] === '') {
-    displayErrorMessage(emailError, 'Veuillez saisir le nom de domaine après "@".');
-    return false;
-  }
-  return true;
-}
+    if(firstnameValue === '') {
+        setError(firstname, 'Prénom est requis');
+    } else {
+        setSuccess(firstname);
+    }
 
-function validatePassword() {
-  const passwordValue = password.value.trim();
-  if (passwordValue === '') {
-    displayErrorMessage(passwordError, 'Le mot de passe est requis.');
-    return false;
-  } else if (passwordValue.length < 8) {
-    displayErrorMessage(passwordError, 'Le mot de passe doit contenir au moins 8 caractères.');
-    return false;
-  } else if (!/[A-Z]/.test(passwordValue) || !/[a-z]/.test(passwordValue) || !/\d/.test(passwordValue)) {
-    displayErrorMessage(passwordError, 'Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule et un chiffre.');
-    return false;
-  }
-  return true;
-}
+    if(emailValue === '') {
+        setError(email, 'Email est requis');
+    } else if (!isValidEmail(emailValue)) {
+        setError(email, 'Fournir une adresse email valide');
+    } else {
+        setSuccess(email);
+    }
 
-function validateAdresse() {
-  const adresseValue = adresse.value.trim();
-  if (adresseValue === '') {
-    displayErrorMessage(adresseError, 'L\'adresse est requise.');
-    return false;
-  }
+    if(passwordValue === '') {
+        setError(password, 'Mot de passe est requis');
+    } else if (!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/.test(passwordValue)) {
+        setError(password, 'Le mot de passe doit contenir au moins 8 caractères avec au moins une lettre majuscule, une lettre minuscule et un chiffre.');
+    } else {
+        setSuccess(password);
+    }
 
-  const adresseRegex = /^\d+\s+\S+/;
-  if (!adresseRegex.test(adresseValue)) {
-    displayErrorMessage(adresseError, 'Veuillez saisir une adresse valide.');
-    return false;
-  }
+    if(addressValue === '') {
+        setError(address, 'Adresse est requise');
+    } else {
+        setSuccess(address);
+    }
 
-  return true;
-}
-
-function validateCodePostal() {
-  const codePostalValue = codePostal.value.trim();
-  if (codePostalValue === '') {
-    displayErrorMessage(codePostalError, 'Le code postal est requis.');
-    return false;
-  } else if (!/^\d{5}$/.test(codePostalValue)) {
-    displayErrorMessage(codePostalError, 'Le code postal doit contenir exactement 5 chiffres.');
-    return false;
-  }
-  return true;
-}
+    if(zipcodeValue === '') {
+        setError(zipcode, 'Code postal est requis');
+    } else if (!/^\d{5}$/.test(zipcodeValue)) {
+        setError(zipcode, 'Le code postal doit contenir exactement 5 chiffres');
+    } else {
+        setSuccess(zipcode);
+    }
+};
