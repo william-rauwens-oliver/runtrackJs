@@ -69,7 +69,7 @@ const validateInputs = () => {
     const passwordValue = password.value.trim();
 
     if(emailValue === '') {
-        setError(email, 'Email est requis');
+        setError(email, 'Email requis');
     } else if (!isValidEmail(emailValue)) {
       setError(email, 'Fournir une adresse email valide avec un "@" et une extension .fr, .com ou .io et un domaine valide (gmail, outlook, free, laplateforme, orange, sfr, icloud)');
     } else {
@@ -77,7 +77,7 @@ const validateInputs = () => {
     }
 
     if(passwordValue === '') {
-        setError(password, 'Mot de passe est requis');
+        setError(password, 'Mot de passe requis');
     } else if (!isValidPassword(passwordValue)) {
         setError(password, 'Le mot de passe doit comporter au moins 8 caractères, une majuscule, une minuscule et un chiffre');
     } else {

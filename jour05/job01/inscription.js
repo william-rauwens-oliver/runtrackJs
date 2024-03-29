@@ -74,7 +74,7 @@ const validateInputs = () => {
     const zipcodeValue = zipcode.value.trim();
 
     if(usernameValue === '') {
-        setError(username, 'Nom est requis');
+        setError(username, 'Nom requis');
     } else if (usernameValue.length < 3) {
         setError(username, 'Nom doit contenir au moins 3 lettres');
     } else {
@@ -82,7 +82,7 @@ const validateInputs = () => {
     }
 
     if(firstnameValue === '') {
-        setError(firstname, 'Prénom est requis');
+        setError(firstname, 'Prénom requis');
     } else if (firstnameValue.length < 3) {
         setError(firstname, 'Prénom doit contenir au moins 3 lettres');
     } else {
@@ -90,7 +90,7 @@ const validateInputs = () => {
     }
 
     if(emailValue === '') {
-        setError(email, 'Email est requis');
+        setError(email, 'Email requis');
     } else if (!isValidEmail(emailValue)) {
         setError(email, 'Fournir une adresse email valide avec un "@" et une extension .fr, .com ou .io et un domaine valide (gmail, outlook, free, laplateforme, orange, sfr, icloud)');
     } else {
@@ -98,7 +98,7 @@ const validateInputs = () => {
     }
 
     if(passwordValue === '') {
-        setError(password, 'Mot de passe est requis');
+        setError(password, 'Mot de passe requis');
     } else if (!isValidPassword(passwordValue)) {
         setError(password, 'Le mot de passe doit comporter au moins 8 caractères, une majuscule, une minuscule et un chiffre');
     } else {
@@ -106,7 +106,7 @@ const validateInputs = () => {
     }
 
     if(addressValue === '') {
-        setError(address, 'Adresse est requise');
+        setError(address, 'Adresse requise');
     } else {
         const addressRegex = /^(\d+)\s+(.+)/;
         const match = addressValue.match(addressRegex);
@@ -118,7 +118,7 @@ const validateInputs = () => {
     }
 
     if(zipcodeValue === '') {
-        setError(zipcode, 'Code postal est requis');
+        setError(zipcode, 'Code postal requis');
     } else if (!/^\d{5}$/.test(zipcodeValue)) {
         setError(zipcode, 'Le code postal doit contenir exactement 5 chiffres');
     } else {
