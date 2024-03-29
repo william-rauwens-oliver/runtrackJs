@@ -60,7 +60,7 @@ const isValidEmail = email => {
 }
 
 const isValidPassword = password => {
-    const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+    const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{9,}$/;
     return re.test(password);
 }
 
@@ -79,7 +79,7 @@ const validateInputs = () => {
     if(passwordValue === '') {
         setError(password, 'Mot de passe requis');
     } else if (!isValidPassword(passwordValue)) {
-        setError(password, 'Le mot de passe doit comporter au moins 8 caractères, une majuscule, une minuscule et un chiffre');
+        setError(password, 'Le mot de passe doit comporter au moins 8 caractères, une majuscule, une minuscule, un caractère spécial et un chiffre');
     } else {
         setSuccess(password);
     }
