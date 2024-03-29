@@ -1,60 +1,86 @@
-const loginForm = document.getElementById('loginForm');
-const username = document.getElementById('username');
+const form = document.getElementById('form');
+const email = document.getElementById('email');
 const password = document.getElementById('password');
-const usernameError = document.getElementById('usernameError');
-const passwordError = document.getElementById('passwordError');
-const formError = document.getElementById('formError');
 
-loginForm.addEventListener('submit', function(event) {
-  event.preventDefault();
-  let isValid = true;
-  clearErrorMessages();
-  const emailValue = username.value.trim();
-  const passwordValue = password.value.trim();
+form.addEventListener('submit', e => {
+    e.preventDefault();
 
-  if (!emailValue) {
-    displayErrorMessage(usernameError, 'L\'email est requis.');
-    isValid = false;
-  } else if (emailValue.indexOf('@') === -1 || emailValue.split('@').length !== 2) {
-    displayErrorMessage(usernameError, 'Format d\'email invalide. Veuillez inclure "@" et le domaine.');
-    isValid = false;
-  } else if (emailValue.split('@')[1] === '') {
-    displayErrorMessage(usernameError, 'Veuillez saisir le nom de domaine après "@".');
-    isValid = false;
-  }
-
-  if (!passwordValue) {
-    displayErrorMessage(passwordError, 'Le mot de passe est requis.');
-    isValid = false;
-  } else if (passwordValue.length < 8) {
-    displayErrorMessage(passwordError, 'Le mot de passe doit contenir au moins 8 caractères.');
-    isValid = false;
-  } else if (!/[A-Z]/.test(passwordValue) || !/[a-z]/.test(passwordValue) || !/\d/.test(passwordValue)) {
-    displayErrorMessage(passwordError, 'Le mot de passe doit contenir au moins une lettre majuscule, une lettre minuscule et un chiffre.');
-    isValid = false;
-  }
-  if (!emailValue && !passwordValue) {
-    displayErrorMessage(formError, 'Veuillez saisir une adresse email et un mot de passe.');
-    isValid = false;
-  } else if (!emailValue) {
-    displayErrorMessage(formError, 'Veuillez saisir une adresse email.');
-    isValid = false;
-  } else if (!passwordValue) {
-    displayErrorMessage(formError, 'Veuillez saisir un mot de passe.');
-    isValid = false;
-  }
-
-  if (isValid) {
-    loginForm.submit();
-  }
+    validateInputs();
 });
 
-function displayErrorMessage(element, message) {
-  element.textContent = message;
+const setError = (element, message) => {
+    const inputControl = element.parentElement;
+    const errorDisplay = inputControl.querySelector('.error');
+
+    errorDisplay.innerText = message;
+    inputControl.classList.add('error');
+    inputControl.classList.remove('success');
 }
 
-function clearErrorMessages() {
-  usernameError.textContent = '';
-  passwordError.textContent = '';
-  formError.textContent = '';
+const setSuccess = element => {
+    const inputControl = element.parentElement;
+    const errorDisplay = inputControl.querySelector('.error');
+
+    errorDisplay.innerText = '';
+    inputControl.classList.add('success');
+    inputControl.classList.remove('error');
+};
+
+const isValidEmail = email => {
+  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/;
+  const validExtensions = ['.fr', '.com', '.io'];
+  const validDomains = ['gmail', 'outlook', 'free', 'laplateforme', 'orange', 'sfr', 'icloud'];
+
+  if (!re.test(String(email).toLowerCase())) {
+      return false;
+  }
+
+  const emailParts = email.split('@');
+  if (emailParts.length !== 2) {
+      return false;
+  }
+
+  const domain = emailParts[1];
+  const domainParts = domain.split('.');
+  if (domainParts.length !== 2) {
+      return false;
+  }
+
+  const extension = domainParts[1];
+  if (!validExtensions.includes('.' + extension)) {
+      return false;
+  }
+
+  const domainName = domainParts[0];
+  if (!validDomains.includes(domainName)) {
+      return false;
+  }
+
+  return true;
+}
+
+const isValidPassword = password => {
+    const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+    return re.test(password);
+}
+
+const validateInputs = () => {
+    const emailValue = email.value.trim();
+    const passwordValue = password.value.trim();
+
+    if(emailValue === '') {
+        setError(email, 'Email est requis');
+    } else if (!isValidEmail(emailValue)) {
+      setError(email, 'Fournir une adresse email valide avec un "@" et une extension .fr, .com ou .io et un domaine valide (gmail, outlook, free, laplateforme, orange, sfr, icloud)');
+    } else {
+        setSuccess(email);
+    }
+
+    if(passwordValue === '') {
+        setError(password, 'Mot de passe est requis');
+    } else if (!isValidPassword(passwordValue)) {
+        setError(password, 'Le mot de passe doit comporter au moins 8 caractères, une majuscule, une minuscule et un chiffre');
+    } else {
+        setSuccess(password);
+    }
 }

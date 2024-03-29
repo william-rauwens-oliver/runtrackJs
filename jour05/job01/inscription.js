@@ -31,8 +31,41 @@ const setSuccess = element => {
 };
 
 const isValidEmail = email => {
-    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(email).toLowerCase());
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/;
+    const validExtensions = ['.fr', '.com', '.io'];
+    const validDomains = ['gmail', 'outlook', 'free', 'laplateforme', 'orange', 'sfr', 'icloud'];
+
+    if (!re.test(String(email).toLowerCase())) {
+        return false;
+    }
+
+    const emailParts = email.split('@');
+    if (emailParts.length !== 2) {
+        return false;
+    }
+
+    const domain = emailParts[1];
+    const domainParts = domain.split('.');
+    if (domainParts.length !== 2) {
+        return false;
+    }
+
+    const extension = domainParts[1];
+    if (!validExtensions.includes('.' + extension)) {
+        return false;
+    }
+
+    const domainName = domainParts[0];
+    if (!validDomains.includes(domainName)) {
+        return false;
+    }
+
+    return true;
+};
+
+const isValidPassword = password => {
+    const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+    return re.test(password);
 }
 
 const validateInputs = () => {
@@ -58,15 +91,15 @@ const validateInputs = () => {
     if(emailValue === '') {
         setError(email, 'Email est requis');
     } else if (!isValidEmail(emailValue)) {
-        setError(email, 'Fournir une adresse email valide');
+        setError(email, 'Fournir une adresse email valide avec un "@" et une extension .fr, .com ou .io et un domaine valide (gmail, outlook, free, laplateforme, orange, sfr, icloud)');
     } else {
         setSuccess(email);
     }
 
     if(passwordValue === '') {
         setError(password, 'Mot de passe est requis');
-    } else if (!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/.test(passwordValue)) {
-        setError(password, 'Le mot de passe doit contenir au moins 8 caractères avec au moins une lettre majuscule, une lettre minuscule et un chiffre.');
+    } else if (!isValidPassword(passwordValue)) {
+        setError(password, 'Le mot de passe doit comporter au moins 8 caractères, une majuscule, une minuscule et un chiffre');
     } else {
         setSuccess(password);
     }
