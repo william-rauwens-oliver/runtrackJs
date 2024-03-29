@@ -8,23 +8,20 @@ const zipcode = document.getElementById('zipcode');
 
 form.addEventListener('submit', e => {
     e.preventDefault();
-
     validateInputs();
 });
 
 const setError = (element, message) => {
     const inputControl = element.parentElement;
     const errorDisplay = inputControl.querySelector('.error');
-
     errorDisplay.innerText = message;
     inputControl.classList.add('error');
     inputControl.classList.remove('success');
-}
+};
 
 const setSuccess = element => {
     const inputControl = element.parentElement;
     const errorDisplay = inputControl.querySelector('.error');
-
     errorDisplay.innerText = '';
     inputControl.classList.add('success');
     inputControl.classList.remove('error');
@@ -66,7 +63,7 @@ const isValidEmail = email => {
 const isValidPassword = password => {
     const re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
     return re.test(password);
-}
+};
 
 const validateInputs = () => {
     const usernameValue = username.value.trim();
@@ -78,12 +75,16 @@ const validateInputs = () => {
 
     if(usernameValue === '') {
         setError(username, 'Nom est requis');
+    } else if (usernameValue.length < 3) {
+        setError(username, 'Nom doit contenir au moins 3 lettres');
     } else {
         setSuccess(username);
     }
 
     if(firstnameValue === '') {
         setError(firstname, 'Prénom est requis');
+    } else if (firstnameValue.length < 3) {
+        setError(firstname, 'Prénom doit contenir au moins 3 lettres');
     } else {
         setSuccess(firstname);
     }
@@ -107,7 +108,13 @@ const validateInputs = () => {
     if(addressValue === '') {
         setError(address, 'Adresse est requise');
     } else {
-        setSuccess(address);
+        const addressRegex = /^(\d+)\s+(.+)/;
+        const match = addressValue.match(addressRegex);
+        if (match) {
+            setSuccess(address);
+        } else {
+            setError(address, 'Adresse invalide. Veuillez inclure le numéro de rue et le nom de la rue.');
+        }
     }
 
     if(zipcodeValue === '') {
