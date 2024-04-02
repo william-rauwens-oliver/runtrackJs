@@ -1,0 +1,21 @@
+.custom-mt-md {
+    margin-top: 9rem;
+}
+
+.custom-mt-md2 {
+    margin-top: 19rem;
+}
+
+.cropped-image {
+    object-fit: cover;
+    height: 50px;
+    width: 80%;
+}
+
+@media (max-width: 768px) {
+    .cropped-image {
+        object-fit: contain;
+        height: auto;
+        width: auto;
+    }
+}
