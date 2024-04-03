@@ -1,7 +1,3 @@
-.img-fluid {
-    max-width: 100%;
-    height: auto;
-}
 
 .custom-mt-md {
     margin-top: 9rem;
@@ -9,12 +5,6 @@
 
 .custom-mt-md2 {
     margin-top: 19rem;
-}
-
-.cropped-image {
-    object-fit: cover;
-    height: 50px;
-    width: 80%;
 }
 
 @media (max-width: 768px) {
@@ -57,6 +47,7 @@
         max-width: 50%;
         display: block;
         margin: 0 auto;
+        padding-bottom: 20px;
     }
 }
 @media (max-width: 768px) {
@@ -65,4 +56,16 @@
         height: 200px;
         object-fit: cover;
 }
+}
+@media (max-width: 768px) {
+    .cropped-image {
+        width: 50%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+    }
+
+    .custom-mt-md,
+    .custom-mt-md2 {
+        margin-top: 0rem;
+    }
 }
