@@ -13,64 +13,102 @@
     <header>
         <nav>
             <div class="nav-wrapper indigo accent-1">
-            <ul>
-                <li><a href="#accueil" class="indigo-text">Accueil</a></li>
-                <li><a href="#inscription" class="yellow-text">Inscription</a></li>
-                <li><a href="#connexion" class="orange-text">Connexion</a></li>
-                <li><a href="#rechercher" class="red-text">Rechercher</a></li>
-            </ul>
+                <ul>
+                    <li><a href="#accueil" class="indigo-text">Accueil</a></li>
+                    <li><a href="#inscription" class="yellow-text">Inscription</a></li>
+                    <li><a href="#connexion" class="orange-text">Connexion</a></li>
+                    <li><a href="#rechercher" class="red-text">Rechercher</a></li>
+                </ul>
             </div>
         </nav>
     </header>
 
     <section>
-        <h2>Formulaire de Création de Compte</h2>
-        <form action="#" method="post">
-            <div class="input-field">
-                <i class="material-icons prefix">person</i>
-                <label for="prenom">Prénom:</label>
-                <input type="text" id="prenom" name="prenom">
-            </div>
-            <div class="input-field">
-                <i class="material-icons prefix">person</i>
-                <label for="nom">Nom:</label>
-                <input type="text" id="nom" name="nom">
-            </div>
-            <div class="input-field">
-                <i class="material-icons prefix">home</i>
-                <label for="adresse">Adresse :</label>
-                <input type="text" id="adresse" name="adresse">
-            </div>
-            <div class="input-field">
-                <i class="material-icons prefix">email</i>
-                <label for="email">Adresse Email :</label>
-                <input type="email" id="email" name="email">
-            </div>
-            <div class="input-field">
-                <i class="material-icons prefix">lock</i>
-                <label for="mot_de_passe">Mot de passe :</label>
-                <input type="password" id="mot_de_passe" name="mot_de_passe">
-            </div>
-            <div class="input-field">
-                <i class="material-icons prefix">lock</i>
-                <label for="mot_de_passe_confirm">Confirmer le mot de passe :</label>
-                <input type="password" id="mot_de_passe_confirm" name="mot_de_passe_confirm">
-            </div>
-            <div>
-                <label>Passions:</label><br>
-                <input type="checkbox" id="informatique" name="passions[]" value="informatique">
-                <label for="informatique">Informatique</label><br>
-                <input type="checkbox" id="voyages" name="passions[]" value="voyages">
-                <label for="voyages">Voyages</label><br>
-                <input type="checkbox" id="sport" name="passions[]" value="sport">
-                <label for="sport">Sport</label><br>
-                <input type="checkbox" id="lecture" name="passions[]" value="lecture">
-                <label for="lecture">Lecture</label>
-            </div>
-            <button class="btn waves-effect waves-light" type="submit">Valider
-                <i class="material-icons right">send</i>
-            </button>
-        </form>
+        <div class="container">
+            <h2>Formulaire de Création de Compte</h2>
+            <form action="index.html" method="post">
+                <label>Civilité : </label><br>
+                <p>
+                    <label>
+                        <input type="radio" name="civilite" value="Monsieur" checked />
+                        <span>Monsieur</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input type="radio" name="civilite" value="Madame" />
+                        <span>Madame</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input type="radio" name="civilite" value="Autre" />
+                        <span>Autre</span>
+                    </label>
+                </p>
+                <div class="input-field">
+                    <i class="material-icons prefix">person</i>
+                    <label for="prenom">Prénom:</label>
+                    <input type="text" id="prenom" name="prenom">
+                </div>
+                <div class="input-field">
+                    <i class="material-icons prefix">person</i>
+                    <label for="nom">Nom:</label>
+                    <input type="text" id="nom" name="nom">
+                </div>
+                <div class="input-field">
+                    <i class="material-icons prefix">home</i>
+                    <label for="adresse">Adresse :</label>
+                    <input type="text" id="adresse" name="adresse">
+                </div>
+                <div class="input-field">
+                    <i class="material-icons prefix">email</i>
+                    <label for="email">Adresse Email :</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                <div class="input-field">
+                    <i class="material-icons prefix">lock</i>
+                    <label for="mot_de_passe">Mot de passe :</label>
+                    <input type="password" id="mot_de_passe" name="mot_de_passe">
+                </div>
+                <div class="input-field">
+                    <i class="material-icons prefix">lock</i>
+                    <label for="mot_de_passe_confirm">Confirmer le mot de passe :</label>
+                    <input type="password" id="mot_de_passe_confirm" name="mot_de_passe_confirm">
+                </div>
+                <div>
+                    <label>Passions:</label><br>
+                    <p>
+                        <label>
+                            <input type="radio" id="informatique" name="passion" value="informatique">
+                            <span>Informatique</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input type="radio" id="voyages" name="passion" value="voyages">
+                            <span>Voyages</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input type="radio" id="sport" name="passion" value="sport">
+                            <span>Sport</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input type="radio" id="lecture" name="passion" value="lecture">
+                            <span>Lecture</span>
+                        </label>
+                    </p>
+                </div>
+                
+                <button class="btn waves-effect waves-light" type="submit">Valider
+                    <i class="material-icons right">send</i>
+                </button>
+            </form>
+        </div>
     </section>
 
     <footer class="card-panel blue darken-2 white-text center-align">
