@@ -26,34 +26,35 @@
     <section>
         <h2>Formulaire de Création de Compte</h2>
         <form action="#" method="post">
-            <div class="input-field">
-                <i class="material-icons prefix">person</i>
-                <label for="prenom">Prénom:</label>
+            <div>
+                <label for="civilite">Civilité:</label><br>
+                <input type="radio" id="civilite_m" name="civilite" value="Monsieur">
+                <label for="civilite_m">Monsieur</label>
+                <input type="radio" id="civilite_mme" name="civilite" value="Madame">
+                <label for="civilite_mme">Madame</label>
+            </div>
+            <div>
+                <label for="prenom">Prénom:</label><br>
                 <input type="text" id="prenom" name="prenom">
             </div>
-            <div class="input-field">
-                <i class="material-icons prefix">person</i>
-                <label for="nom">Nom:</label>
+            <div>
+                <label for="nom">Nom:</label><br>
                 <input type="text" id="nom" name="nom">
             </div>
-            <div class="input-field">
-                <i class="material-icons prefix">home</i>
-                <label for="adresse">Adresse :</label>
+            <div>
+                <label for="adresse">Adresse:</label><br>
                 <input type="text" id="adresse" name="adresse">
             </div>
-            <div class="input-field">
-                <i class="material-icons prefix">email</i>
-                <label for="email">Adresse Email :</label>
+            <div>
+                <label for="email">Adresse Email:</label><br>
                 <input type="email" id="email" name="email">
             </div>
-            <div class="input-field">
-                <i class="material-icons prefix">lock</i>
-                <label for="mot_de_passe">Mot de passe :</label>
+            <div>
+                <label for="mot_de_passe">Mot de passe:</label><br>
                 <input type="password" id="mot_de_passe" name="mot_de_passe">
             </div>
-            <div class="input-field">
-                <i class="material-icons prefix">lock</i>
-                <label for="mot_de_passe_confirm">Confirmer le mot de passe :</label>
+            <div>
+                <label for="mot_de_passe_confirm">Confirmer le mot de passe:</label><br>
                 <input type="password" id="mot_de_passe_confirm" name="mot_de_passe_confirm">
             </div>
             <div>
@@ -67,9 +68,7 @@
                 <input type="checkbox" id="lecture" name="passions[]" value="lecture">
                 <label for="lecture">Lecture</label>
             </div>
-            <button class="btn waves-effect waves-light" type="submit">Valider
-                <i class="material-icons right">send</i>
-            </button>
+            <button type="submit">Valider</button>
         </form>
     </section>
 
