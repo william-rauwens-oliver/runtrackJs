@@ -1,85 +1,86 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tailwind</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@^2.2.19/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<body>
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tailwind</title>
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@^2.2.19/dist/tailwind.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    </head>
+    <body>
 
-    <header class="bg-purple-500 text-white">
-        <nav class="bg-purple-500 flex justify-center items-center py-4 px-8">
-            <ul class="flex">
-                <li><a href="#accueil" class="text-white px-4">Accueil</a></li>
-                <li><a href="#inscription" class="text-white px-4">Inscription</a></li>
-                <li><a href="#connexion" class="text-white px-4">Connexion</a></li>
-                <li><a href="#rechercher" class="text-white px-4">Rechercher</a></li>
+        <header class="bg-purple-500 text-white">
+            <nav class="bg-purple-500 flex justify-center items-center py-4 px-8">
+                <ul class="flex">
+                    <li><a href="#accueil" class="text-white px-4">Accueil</a></li>
+                    <li><a href="#inscription" class="text-white px-4">Inscription</a></li>
+                    <li><a href="#connexion" class="text-white px-4">Connexion</a></li>
+                    <li><a href="#rechercher" class="text-white px-4">Rechercher</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="max-w-md mx-auto mt-8 p-6 bg-white rounded-md shadow-md">
+            <h2 class="text-2xl mb-4">Formulaire de Création de Compte</h2>
+            <form action="#" method="post">
+                <div class="mb-4">
+                    <label for="civilite" class="block">Civilité:</label>
+                    <div class="flex items-center space-x-2">
+                        <input type="radio" id="civilite_m" name="civilite" value="Monsieur" class="form-radio text-purple-500" checked>
+                        <label for="civilite_m"><i class="fas fa-male"></i> Monsieur</label>
+                        <input type="radio" id="civilite_mme" name="civilite" value="Madame" class="form-radio text-purple-500">
+                        <label for="civilite_mme"><i class="fas fa-female"></i> Madame</label>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label for="prenom" class="block"><i class="fas fa-user"></i> Prénom:</label>
+                    <input type="text" id="prenom" name="prenom" class="w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Votre prénom">
+                </div>
+                <div class="mb-4">
+                    <label for="nom" class="block"><i class="fas fa-user"></i> Nom:</label>
+                    <input type="text" id="nom" name="nom" class="w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Votre nom">
+                </div>
+                <div class="mb-4">
+                    <label for="adresse" class="block"><i class="fas fa-map-marker-alt"></i> Adresse:</label>
+                    <input type="text" id="adresse" name="adresse" class="w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Votre adresse">
+                </div>
+                <div class="mb-4">
+                    <label for="email" class="block"><i class="fas fa-envelope"></i> Adresse Email:</label>
+                    <input type="email" id="email" name="email" class="w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Votre adresse email">
+                </div>
+                <div class="mb-4">
+                    <label for="mot_de_passe" class="block"><i class="fas fa-lock"></i> Mot de passe:</label>
+                    <input type="password" id="mot_de_passe" name="mot_de_passe" class="w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Votre mot de passe">
+                </div>
+                <div class="mb-4">
+                    <label for="mot_de_passe_confirm" class="block"><i class="fas fa-lock"></i> Confirmer le mot de passe:</label>
+                    <input type="password" id="mot_de_passe_confirm" name="mot_de_passe_confirm" class="w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Confirmez votre mot de passe">
+                </div>
+                <div class="mb-4">
+                    <label class="block"><i class="fas fa-heart"></i> Passions:</label>
+                    <div class="flex space-x-4">
+                        <input type="checkbox" id="informatique" name="passions[]" value="informatique" class="form-checkbox text-purple-500">
+                        <label for="informatique">Informatique</label>
+                        <input type="checkbox" id="voyages" name="passions[]" value="voyages" class="form-checkbox text-purple-500">
+                        <label for="voyages">Voyages</label>
+                        <input type="checkbox" id="sport" name="passions[]" value="sport" class="form-checkbox text-purple-500">
+                        <label for="sport">Sport</label>
+                        <input type="checkbox" id="lecture" name="passions[]" value="lecture" class="form-checkbox text-purple-500">
+                        <label for="lecture">Lecture</label>
+                    </div>
+                </div>                
+                <button type="submit" class="w-full bg-purple-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-purple-600 transition-colors duration-300">Valider</button>
+            </form>
+        </section>
+
+        <footer class="bg-gray-700 text-white py-4 mt-8">
+            <ul class="flex justify-center">
+                <li><a href="#accueil" class="text-yellow-500 px-4">Accueil</a></li>
+                <li><a href="#inscription" class="text-yellow-500 px-4">Inscription</a></li>
+                <li><a href="#connexion" class="text-yellow-500 px-4">Connexion</a></li>
+                <li><a href="#rechercher" class="text-yellow-500 px-4">Rechercher</a></li>
             </ul>
-        </nav>
-    </header>
+        </footer>
 
-    <section class="max-w-md mx-auto mt-8 p-6 bg-white rounded-md shadow-md">
-        <h2 class="text-2xl mb-4">Formulaire de Création de Compte</h2>
-        <form action="#" method="post">
-            <div class="mb-4">
-                <label for="civilite" class="block">Civilité:</label>
-                <div class="flex items-center space-x-2">
-                    <input type="radio" id="civilite_m" name="civilite" value="Monsieur" class="form-radio text-purple-500" checked>
-                    <label for="civilite_m">Monsieur</label>
-                    <input type="radio" id="civilite_mme" name="civilite" value="Madame" class="form-radio text-purple-500">
-                    <label for="civilite_mme">Madame</label>
-                </div>
-            </div>
-            <div class="mb-4">
-                <label for="prenom" class="block">Prénom:</label>
-                <input type="text" id="prenom" name="prenom" class="w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Votre prénom">
-            </div>
-            <div class="mb-4">
-                <label for="nom" class="block">Nom:</label>
-                <input type="text" id="nom" name="nom" class="w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Votre nom">
-            </div>
-            <div class="mb-4">
-                <label for="adresse" class="block">Adresse:</label>
-                <input type="text" id="adresse" name="adresse" class="w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Votre adresse">
-            </div>
-            <div class="mb-4">
-                <label for="email" class="block">Adresse Email:</label>
-                <input type="email" id="email" name="email" class="w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Votre adresse email">
-            </div>
-            <div class="mb-4">
-                <label for="mot_de_passe" class="block">Mot de passe:</label>
-                <input type="password" id="mot_de_passe" name="mot_de_passe" class="w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Votre mot de passe">
-            </div>
-            <div class="mb-4">
-                <label for="mot_de_passe_confirm" class="block">Confirmer le mot de passe:</label>
-                <input type="password" id="mot_de_passe_confirm" name="mot_de_passe_confirm" class="w-full px-4 py-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Confirmez votre mot de passe">
-            </div>
-            <div class="mb-4">
-                <label class="block">Passions:</label>
-                <div class="flex space-x-4">
-                    <input type="checkbox" id="informatique" name="passions[]" value="informatique" class="form-checkbox text-purple-500">
-                    <label for="informatique">Informatique</label>
-                    <input type="checkbox" id="voyages" name="passions[]" value="voyages" class="form-checkbox text-purple-500">
-                    <label for="voyages">Voyages</label>
-                    <input type="checkbox" id="sport" name="passions[]" value="sport" class="form-checkbox text-purple-500">
-                    <label for="sport">Sport</label>
-                    <input type="checkbox" id="lecture" name="passions[]" value="lecture" class="form-checkbox text-purple-500">
-                    <label for="lecture">Lecture</label>
-                </div>
-            </div>
-            <button type="submit" class="w-full bg-purple-500 text-white px-4 py-2 rounded-md shadow-sm hover:bg-purple-600 transition-colors duration-300">Valider</button>
-        </form>
-    </section>
-
-    <footer class="bg-gray-700 text-white py-4 mt-8">
-        <ul class="flex justify-center">
-            <li><a href="#accueil" class="text-yellow-500 px-4">Accueil</a></li>
-            <li><a href="#inscription" class="text-yellow-500 px-4">Inscription</a></li>
-            <li><a href="#connexion" class="text-yellow-500 px-4">Connexion</a></li>
-            <li><a href="#rechercher" class="text-yellow-500 px-4">Rechercher</a></li>
-        </ul>
-    </footer>
-
-</body>
-</html>
+    </body>
+    </html>
