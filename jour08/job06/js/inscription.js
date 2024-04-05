@@ -5,6 +5,7 @@ const email = document.getElementById('email');
 const password = document.getElementById('password');
 const confirmPassword = document.getElementById('confirm-password');
 const terms = document.getElementById('terms');
+const successMessage = document.getElementById('success-message'); // Ajout de l'élément pour afficher le message de succès
 
 form.addEventListener('submit', e => {
     e.preventDefault();
@@ -83,5 +84,15 @@ const validateInputs = () => {
         setError(terms.nextElementSibling.querySelector('label'), 'Veuillez accepter les conditions générales');
     } else {
         setSuccess(terms.nextElementSibling.querySelector('label'));
+    }
+
+    if (firstnameValue !== '' && lastnameValue !== '' && isValidEmail(emailValue) && isValidPassword(passwordValue) && confirmPasswordValue === passwordValue && terms.checked) {
+        const userData = {
+            email: emailValue,
+            password: passwordValue
+        };
+        localStorage.setItem('userData', JSON.stringify(userData));
+        successMessage.innerText = 'Inscription réussie !';
+        successMessage.classList.remove('hidden');
     }
 };
