@@ -120,6 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => {
                 console.error('Erreur:', error);
+                setError(email, 'Cette adresse email est déjà utilisée');
             });
         }
     };
